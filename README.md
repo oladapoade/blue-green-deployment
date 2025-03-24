@@ -6,7 +6,7 @@ This project showcases a hands-on implementation of **Blue-Green Deployment on A
 
 ## 📌 Architecture Diagram
 
-
+![Architecture Diagram](images/Untitled%20design.png)
 
 ---
 
@@ -52,15 +52,15 @@ terraform init
 I executed `terraform plan` to preview resources to be created. This ensured correct configuration before deployment.
 
 **Screenshots:**
-
-
-
-
-
-
-
-
-
+![Plan Part 1](images/terraform-plan-output-part1.png)
+![Plan Part 2](images/terraform-plan-output-part2.png)
+![Plan Part 3](images/terraform-plan-output-part3.png)
+![Plan Part 4](images/terraform-plan-output-part4.png)
+![Plan Part 5](images/terraform-plan-output-part5.png)
+![Plan Part 6](images/terraform-plan-output-part6.png)
+![Plan Part 7](images/terraform-plan-output-part7.png)
+![Plan Part 8](images/terraform-plan-output-part8.png)
+![Plan Part 9](images/terraform-plan-output-part9.png)
 
 ---
 
@@ -69,7 +69,7 @@ I executed `terraform plan` to preview resources to be created. This ensured cor
 Executed `terraform apply` to provision AWS resources: EC2, VPC, subnets, security groups, ALB, and more.
 
 **Screenshot:**
-
+![Apply Output](images/terraform-apply-output-with-alb.png)
 
 ---
 
@@ -78,7 +78,7 @@ Executed `terraform apply` to provision AWS resources: EC2, VPC, subnets, securi
 Added rules for **port 22 (SSH)** and **port 80 (HTTP)** to allow secure connections and web traffic.
 
 **Screenshot:**
-
+![Security Group](images/security-group-ssh-rule-added.png)
 
 ---
 
@@ -87,7 +87,7 @@ Added rules for **port 22 (SSH)** and **port 80 (HTTP)** to allow secure connect
 Validated the deployment of Blue and Green EC2 instances with public IPs from Terraform output.
 
 **Screenshot:**
-
+![EC2 Public IPs](images/ec2-instances-public-ip.png)
 
 ---
 
@@ -96,7 +96,7 @@ Validated the deployment of Blue and Green EC2 instances with public IPs from Te
 SSH’d into the Blue instance using a key pair. This allowed access to set up the Apache web server.
 
 **Screenshot:**
-
+![SSH Login](images/blue-instance-ssh-login.png)
 
 ---
 
@@ -113,7 +113,7 @@ echo "<h1>Hello from BLUE Environment</h1>" | sudo tee /var/www/html/index.html
 ```
 
 **Screenshot:**
-
+![Apache Setup](images/instance-apache-setup.png)
 
 ---
 
@@ -122,7 +122,7 @@ echo "<h1>Hello from BLUE Environment</h1>" | sudo tee /var/www/html/index.html
 Tested the Application Load Balancer URL to confirm the Blue page was correctly routed.
 
 **Screenshot:**
-
+![Blue Page Test](images/alb-blue-page-test.png)
 
 ---
 
@@ -131,7 +131,7 @@ Tested the Application Load Balancer URL to confirm the Blue page was correctly 
 Re-applied configuration to direct traffic to the Green environment.
 
 **Screenshot:**
-
+![Green Page Test](images/alb-green-page-test.png)
 
 ---
 
@@ -140,27 +140,24 @@ Re-applied configuration to direct traffic to the Green environment.
 Observed instance state before replacement/termination of one environment.
 
 **Screenshot:**
-
+![Instance Lifecycle](images/ec2-blue-green-before-termination.png)
 
 ---
 
 ## ⚠️ Problems Faced & Solutions
 
 ### ❌ Issue: SSH Not Working
-
 - **Cause:** Port 22 not open in security group
 - **Fix:** Added SSH rule in the security group for inbound traffic
 
 ### ❌ Issue: No Public IP on EC2
-
 - **Cause:** Subnet configuration was missing `map_public_ip_on_launch`
 - **Fix:** Updated subnet and re-applied Terraform
 
 **Screenshot:**
-
+![Subnet Fix](images/terraform-reapply-public-subnet.png)
 
 ### ❌ Issue: ALB Not Routing Properly
-
 - **Cause:** Incorrect target group health check and listener rules
 - **Fix:** Modified health check path and adjusted listener configurations
 
@@ -197,11 +194,14 @@ blue-green-deployment/
 ## 🙋‍♂️ About Me
 
 **Oladapo Adenekan**\
-📧 [Email](mailto\:adenekanoladapo302@gmail.com)\
+📧 [Email](mailto:adenekanoladapo302@gmail.com)\
 🔗 [GitHub](https://github.com/oladapoade)\
 🔗 [LinkedIn](https://www.linkedin.com/in/oladapo568)
 
 ---
+
+
+
 
 
 
